@@ -1,12 +1,4 @@
 class myBinarySearchTreeNode{
-  public static void main(String[] args){
-    int[] A = {4, 3, 7};
-
-    myBinarySearchTreeNode tree = new myBinarySearchTreeNode(A);
-    System.out.println();
-    tree.print();
-    System.out.println(tree.size());
-  }
   int myValue;
   myBinarySearchTreeNode left;
   myBinarySearchTreeNode right;
@@ -22,7 +14,8 @@ class myBinarySearchTreeNode{
     // creates a new Binary Search Tree rooted at the first value in the array
     /// by inserting elements into the tree in the order they are given in A.
     myBinarySearchTreeNode tree = new myBinarySearchTreeNode(A[0]);
-    for(int i = 0; i < A.length; i++){
+    myValue = A[0];
+    for(int i = 1; i < A.length; i++){
       this.insert(A[i]);
     }
   }
@@ -43,7 +36,7 @@ class myBinarySearchTreeNode{
       }
     }
     else{
-      if (inValue <= myValue) {
+      if (inValue < myValue) {
         if (left == null) {
           left = new myBinarySearchTreeNode(inValue);
         }
@@ -54,7 +47,7 @@ class myBinarySearchTreeNode{
     }
     if(inValue == myValue){
       //Display error message i guess
-      System.out.print("Duplicate found, so no insert.");
+      System.out.println("Duplicate found, so no insert.");
     }
   }
 
@@ -66,19 +59,18 @@ class myBinarySearchTreeNode{
     int rightHeight = 0;
 
     if(left != null){
-      leftHeight = left.height();
+      leftHeight = left.height() + 1;
     }
     if(right != null){
-      rightHeight = right.height();
+      rightHeight = right.height() + 1;
     }
-
     if(leftHeight > rightHeight){
       treeHeight = leftHeight;
     }
     else{
       treeHeight = rightHeight;
     }
-     return treeHeight + 1;
+     return treeHeight;
   }
 
   public int depth(int search){
@@ -87,17 +79,17 @@ class myBinarySearchTreeNode{
      // Note that if the tree is a proper BST, this method should complete in O(log n) time.
      // Additionally, remember that the depth is the number of nodes on the path from a node to the root
      // (i.e. the number of the recursive calls).
-    if(search < myValue){
+    if(search < this.myValue){
       if(left != null){
-        return left.depth(search);
+        return 1 + left.depth(search);
       }
     }
-    if(search > myValue){
+    if(search > this.myValue){
       if(right != null) {
-        return right.depth(search);
+        return 1 + right.depth(search);
       }
     }
-    if(search == myValue){
+    if(search == this.myValue){
       return 0;
     }
     return -1;
