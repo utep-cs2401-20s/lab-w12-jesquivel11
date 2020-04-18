@@ -21,7 +21,7 @@ public class myBinarySearchTreeNodeTest {
     }
     @Test
     public void test3_depth(){
-        //Testing depth method if it returns accurate results
+        //Testing depth method if it returns the accurate result for selected node
         int[] A = {3, 0, 1, 4, 6};
         myBinarySearchTreeNode bst = new myBinarySearchTreeNode(A);
         //Test passed
@@ -39,7 +39,7 @@ public class myBinarySearchTreeNodeTest {
     }
     @Test
     public void test5_insert(){
-        //Inserting a new number into the tree then checking its depth to see if it was insterted in the right place
+        //Inserting a new number into the tree then checking its depth to see if it was inserted in the right place
         int [] A = {1, 2, 3, 4, 5, 6, 8, 9};
         myBinarySearchTreeNode bst = new myBinarySearchTreeNode(A);
         bst.insert(7);
